@@ -19,14 +19,13 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
     private float lastSpeed;
-    private Vector3 lastDirection;
+    private Vector3 lastForward;
 
     // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
-
         Vector3 move = transform.right * x + transform.forward * z;
         move = move.normalized;
         
@@ -35,12 +34,19 @@ public class PlayerMovement : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            lastForward = transform.forward * z;
             move = SetMoveSpeed(move);
-            UpdateVerticalMovement();
+            CheckJump();
+            if (velocity.y < 0)
+            {
+                velocity.y = -2f;
+            }
         }
         else
         {
-            move = lastDirection;
+            move = transform.right * x + lastForward;
+            move = move.normalized;
+            move *= lastSpeed;
         }
 
         velocity.y += gravity * Time.deltaTime;
@@ -48,13 +54,8 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * Time.deltaTime);
     }
 
-    private void UpdateVerticalMovement()
+    private void CheckJump()
     {
-        if (velocity.y < 0)
-        {
-            velocity.y = -2f;
-        }
-
         if (Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
@@ -73,9 +74,8 @@ public class PlayerMovement : MonoBehaviour
         {
             speed /= 2;
         }
-
+        lastSpeed = speed;
         move *= speed;
-        lastDirection = move;
         return move;
     }
 }
