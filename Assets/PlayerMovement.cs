@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
 
 
     private Vector3 velocity;
+    private float lastSpeed;
 
     // Update is called once per frame
     void Update()
@@ -31,13 +32,21 @@ public class PlayerMovement : MonoBehaviour
 
         float speed = moveSpeed;
 
-        if (controller.isGrounded && Input.GetKey(KeyCode.LeftShift))
+
+        if (controller.isGrounded)
         {
-            speed *= 2;
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                speed *= 2;
+            }
+            else if (Input.GetKey(KeyCode.LeftControl))
+            {
+                speed /= 2;
+            }
         }
-        else if (Input.GetKey(KeyCode.LeftControl))
+        else
         {
-            speed /= 2;
+            speed = lastSpeed;
         }
 
         if (controller.isGrounded)
@@ -55,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
 
         velocity.y += gravity * Time.deltaTime;
 
+        lastSpeed = speed;
         move *= speed;
         move.y = velocity.y;
         controller.Move(move * Time.deltaTime);
