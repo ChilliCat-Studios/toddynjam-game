@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetButtonDown("Jump"))
             {
-                velocity.y = Mathf.Sqrt(jumpHeight/2 * -1.3f * gravity);
+                velocity.y = Mathf.Sqrt(jumpHeight/2 * -1.5f * gravity);
             }
         }
 
