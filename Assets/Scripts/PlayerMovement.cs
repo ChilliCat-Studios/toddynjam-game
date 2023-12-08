@@ -25,9 +25,11 @@ public class PlayerMovement : MonoBehaviour
     private bool isStraifing;
     private bool isBackwards;
     private float moveDir;
+    private bool isGrounded;
 
     void Update()
     {
+        isGrounded = controller.isGrounded;
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
@@ -45,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (velocity.y < 0)
             {
-                velocity.y = -2f;
+                velocity.y = -4f;
             }
         }
         else if (isStationaryJump())

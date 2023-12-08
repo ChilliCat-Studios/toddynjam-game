@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.011764707, g: 0.019607844, b: 0.1254902, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.0045
@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8135cf02c73748d44b776c15b93018c9, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 262.33694, g: 325.04984, b: 430.2193, a: 1}
+  m_IndirectSpecularColor: {r: 0.0008095468, g: 0.004161891, b: 0.02006406, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -153,9 +153,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Profile: {fileID: 0}
+  m_NeedUpdateStaticLightingSky: 0
   m_StaticLightingSkyUniqueID: 0
+  m_LastComputedHash: 0
   m_StaticLightingCloudsUniqueID: 0
+  m_LastComputedCloudHash: 0
+  m_SkySettings: {fileID: 0}
+  m_SkySettingsFromProfile: {fileID: 0}
+  m_CloudSettings: {fileID: 0}
+  m_CloudSettingsFromProfile: {fileID: 0}
   m_StaticLightingVolumetricClouds: 0
+  m_LastComputedVolumetricCloudHash: 0
+  m_VolumetricClouds: {fileID: 0}
+  m_VolumetricCloudSettingsFromProfile: {fileID: 0}
+  m_VolumeSkyList: []
+  m_VolumeCloudsList: []
 --- !u!4 &172283089
 Transform:
   m_ObjectHideFlags: 1
@@ -310,10 +322,18 @@ MonoBehaviour:
   m_InteractsWithSky: 1
   m_AngularDiameter: 0.5
   m_FlareSize: 2
-  m_FlareTint: {r: 1, g: 1, b: 1, a: 1}
+  m_FlareTint:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
   m_FlareFalloff: 4
   m_SurfaceTexture: {fileID: 0}
-  m_SurfaceTint: {r: 1, g: 1, b: 1, a: 1}
+  m_SurfaceTint:
+    r: 1
+    g: 1
+    b: 1
+    a: 1
   m_Distance: 1.5e+11
   m_UseRayTracedShadows: 0
   m_NumRayTracingSamples: 4
@@ -349,7 +369,11 @@ MonoBehaviour:
     m_UseOverride: 1
     m_Level: 0
   m_RayTracedContactShadow: 0
-  m_ShadowTint: {r: 0, g: 0, b: 0, a: 1}
+  m_ShadowTint:
+    r: 0
+    g: 0
+    b: 0
+    a: 1
   m_PenumbraTint: 0
   m_NormalBias: 0.75
   m_SlopeBias: 0.5
@@ -362,6 +386,7 @@ MonoBehaviour:
   m_BarnDoorLength: 0.05
   m_preserveCachedShadow: 0
   m_OnDemandShadowRenderOnPlacement: 1
+  forceRenderOnPlacement: 0
   m_ShadowCascadeRatios:
   - 0.05
   - 0.2
@@ -377,10 +402,26 @@ MonoBehaviour:
   useOldInspector: 0
   useVolumetric: 1
   featuresFoldout: 1
+  m_ShadowRequestIndices: 000000000100000002000000030000000000000000000000
+  m_CachedViewPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  m_Light: {fileID: 705507994}
+  m_ChildEmissiveMeshViewer: {fileID: 0}
+  m_EmissiveMeshFilter: {fileID: 0}
+  <emissiveMeshRenderer>k__BackingField: {fileID: 0}
+  m_NeedsPrefabInstanceCheck: 0
+  needRefreshPrefabInstanceEmissiveMeshes: 0
+  needRefreshEmissiveMeshesFromTimeLineUpdate: 0
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
   m_Version: 11
+  m_LightLayers: 1
   m_ObsoleteShadowResolutionTier: 1
   m_ObsoleteUseShadowQualitySettings: 0
   m_ObsoleteCustomShadowResolution: 512
@@ -614,7 +655,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 127
   m_IsActive: 1
 --- !u!154 &1628783448
 TerrainCollider:
@@ -646,14 +687,14 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: facae1abdbc298a468515d4da0f16efe, type: 2}
-  m_TreeDistance: 4959
-  m_TreeBillboardDistance: 2000
-  m_TreeCrossFadeLength: 21.9
-  m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 1000
+  m_TreeDistance: 1869
+  m_TreeBillboardDistance: 744
+  m_TreeCrossFadeLength: 85.8
+  m_TreeMaximumFullLODCount: 4225
+  m_DetailObjectDistance: 384
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 2137
+  m_SplatMapDistance: 0
   m_HeightmapMaximumLOD: 0
   m_ShadowCastingMode: 2
   m_DrawHeightmap: 1
@@ -662,9 +703,9 @@ Terrain:
   m_StaticShadowCaster: 0
   m_IgnoreQualitySettings: 0
   m_ReflectionProbeUsage: 1
-  m_MaterialTemplate: {fileID: 2100000, guid: 22ff8771d87ef27429e670136399094b, type: 2}
+  m_MaterialTemplate: {fileID: 10652, guid: 0000000000000000f000000000000000, type: 0}
   m_BakeLightProbesForTrees: 1
-  m_PreserveTreePrototypeLayers: 0
+  m_PreserveTreePrototypeLayers: 1
   m_DeringLightProbesForTrees: 1
   m_ReceiveGI: 1
   m_ScaleInLightmap: 0.0256
@@ -756,10 +797,18 @@ MonoBehaviour:
   endSmoothness: 0.85
   smoothnessFadeStart: 100
   smoothnessFadeDistance: 500
-  refractionColor: {r: 0.1, g: 0.5, b: 0.5, a: 1}
+  refractionColor:
+    r: 0.1
+    g: 0.5
+    b: 0.5
+    a: 1
   maxRefractionDistance: 0.5
   absorptionDistance: 1.5
-  scatteringColor: {r: 0, g: 0.4, b: 0.4, a: 1}
+  scatteringColor:
+    r: 0
+    g: 0.4
+    b: 0.4
+    a: 1
   ambientScattering: 0.2
   heightScattering: 0.2
   displacementScattering: 0.1
@@ -779,10 +828,8 @@ MonoBehaviour:
   foamMaskExtent: {x: 100, y: 100}
   foamMaskOffset: {x: 0, y: 0}
   windFoamCurve:
-    serializedVersion: 2
     m_Curve:
-    - serializedVersion: 3
-      time: 0
+    - time: 0
       value: 0
       inSlope: 0
       outSlope: 0
@@ -790,8 +837,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.2
+    - time: 0.2
       value: 0
       inSlope: 0
       outSlope: 0
@@ -799,8 +845,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 0.3
+    - time: 0.3
       value: 1
       inSlope: 0
       outSlope: 0
@@ -808,8 +853,7 @@ MonoBehaviour:
       weightedMode: 0
       inWeight: 0
       outWeight: 0
-    - serializedVersion: 3
-      time: 1
+    - time: 1
       value: 1
       inSlope: 0
       outSlope: 0
@@ -833,6 +877,7 @@ MonoBehaviour:
   volumePrority: 0
   transitionSize: 0.1
   absorbtionDistanceMultiplier: 1
+  m_LastPrefabStageVisibility: 1
 --- !u!4 &1645890630
 Transform:
   m_ObjectHideFlags: 0
@@ -1066,6 +1111,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2929919711892941530, guid: a25bf01623b431747b464eeeb55d8673, type: 3}
+      propertyPath: mouseSensitivity
+      value: 500
+      objectReference: {fileID: 0}
     - target: {fileID: 3625826163990533669, guid: a25bf01623b431747b464eeeb55d8673, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.8
@@ -1143,11 +1192,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23c1ce4fb46143f46bc5cb5224c934f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_Camera: {fileID: 7554959138898683612}
   clearColorMode: 0
-  backgroundColorHDR: {r: 0.025, g: 0.07, b: 0.19, a: 0}
+  backgroundColorHDR:
+    r: 0.025
+    g: 0.07
+    b: 0.19
+    a: 0
   clearDepth: 1
   volumeLayerMask:
-    serializedVersion: 2
     m_Bits: 1
   volumeAnchorOverride: {fileID: 0}
   antialiasing: 0
@@ -1178,7 +1231,6 @@ MonoBehaviour:
   customRenderingSettings: 0
   invertFaceCulling: 0
   probeLayerMask:
-    serializedVersion: 2
     m_Bits: 4294967295
   hasPersistentHistory: 0
   screenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -1189,10 +1241,13 @@ MonoBehaviour:
   deepLearningSuperSamplingUseCustomAttributes: 0
   deepLearningSuperSamplingUseOptimalSettings: 1
   deepLearningSuperSamplingSharpening: 0
+  cameraCanRenderDLSS: 0
   fsrOverrideSharpness: 0
   fsrSharpness: 0.92
   exposureTarget: {fileID: 0}
   materialMipBias: 0
+  probeCustomFixedExposure: 1
+  deExposureMultiplier: 1
   m_RenderingPathCustomFrameSettings:
     bitDatas:
       data1: 140666587840333
@@ -1207,12 +1262,16 @@ MonoBehaviour:
     sssQualityLevel: 0
     sssCustomSampleBudget: 20
     msaaMode: 1
+    sssResolvedSampleBudget: 0
     materialQuality: 0
   renderingPathCustomFrameSettingsOverrideMask:
     mask:
       data1: 0
       data2: 0
   defaultFrameSettings: 0
+  m_IsDebugRegistered: 0
+  m_CameraRegisterName: Main Camera
+  <isEditorCameraPreview>k__BackingField: 0
   m_Version: 9
   m_ObsoleteRenderingPath: 0
   m_ObsoleteFrameSettings:
@@ -1260,6 +1319,11 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!20 &7554959138898683612 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 8642503578479511723, guid: a25bf01623b431747b464eeeb55d8673, type: 3}
+  m_PrefabInstance: {fileID: 7554959138898683606}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
