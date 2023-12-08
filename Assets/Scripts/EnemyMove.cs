@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class EnemyMove : MonoBehaviour
 {
-    [Range(15f, 15f)]
+    [Range(55f, 55f)]
     [SerializeField]
-    private float ViewRange = 15f;
+    private float ViewRange = 100f;
     [SerializeField]
     private float detectionCheckDelays = 0.1f;
     public Transform targetObj = null;
@@ -39,7 +39,7 @@ public class EnemyMove : MonoBehaviour
 
     private void DetectIfTargetOutOfRange()
     {
-        if (targetObj == Player || targetObj.gameObject.activeSelf == false || Vector3.Distance(transform.position, targetObj.position) > ViewRange)
+        if (targetObj == Player && Vector3.Distance(transform.position, targetObj.position) < ViewRange)
         {
             targetObj = null;
         }
@@ -53,7 +53,7 @@ public class EnemyMove : MonoBehaviour
             targetObj = Player;
             if (targetObj = Player)
             {
-                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 10 * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 0.5f * Time.deltaTime);
             }
         }
     }
