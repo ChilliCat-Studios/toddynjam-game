@@ -19,32 +19,51 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 velocity;
     private float lastSpeed;
-    private Vector3 lastForward;
+    private Vector3 jumpForward;
+    private bool isStraifing;
+    private bool isBackwards;
 
-    // Update is called once per frame
     void Update()
     {
         float x = Input.GetAxisRaw("Horizontal");
         float z = Input.GetAxisRaw("Vertical");
         Vector3 move = transform.right * x + transform.forward * z;
         move = move.normalized;
-        
-        
 
 
         if (controller.isGrounded)
         {
-            lastForward = transform.forward * z;
+            move = transform.right * x + transform.forward * z;
+            move = move.normalized;
+            CalculateMoveDirection(move);
+
             move = SetMoveSpeed(move);
-            CheckJump();
+            if (CheckJump())
+            {
+                jumpForward = transform.forward * z;
+            }
             if (velocity.y < 0)
             {
                 velocity.y = -2f;
             }
         }
+        else if(jumpForward.Equals(Vector3.zero))
+        {
+            move = Vector3.zero;
+        }
         else
         {
-            move = transform.right * x + lastForward;
+            
+            float dot = Vector3.Dot(jumpForward, move);
+            Debug.Log(dot);
+            if(dot < 0)
+            {
+                move = jumpForward;
+            }
+            else
+            {
+                move = transform.right * x + jumpForward;
+            }
             move = move.normalized;
             move *= lastSpeed;
         }
@@ -54,12 +73,33 @@ public class PlayerMovement : MonoBehaviour
         controller.Move(move * Time.deltaTime);
     }
 
-    private void CheckJump()
+    private void CalculateMoveDirection(Vector3 move)
+    {
+        if (Vector3.Dot(move, transform.forward) < -.5f)
+        {
+            isBackwards = true;
+            isStraifing = false;
+        }
+        else if (Vector3.Dot(move, transform.forward) < .5f)
+        {
+            isStraifing = true;
+            isBackwards = false;
+        }
+        else
+        {
+            isBackwards = false;
+            isStraifing = false;
+        }
+    }
+
+    private bool CheckJump()
     {
         if (Input.GetButtonDown("Jump"))
         {
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            return true;
         }
+        return false;
     }
 
     private Vector3 SetMoveSpeed(Vector3 move)
