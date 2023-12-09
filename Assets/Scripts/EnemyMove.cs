@@ -53,7 +53,7 @@ public class EnemyMove : MonoBehaviour
             targetObj = Player;
             if (targetObj = Player)
             {
-                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 0.5f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 10f * Time.deltaTime);
             }
         }
     }
