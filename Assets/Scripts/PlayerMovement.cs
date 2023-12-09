@@ -47,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
             }
             if (velocity.y < 0)
             {
-                velocity.y = -4f;
+                velocity.y = -10f;
             }
         }
         else if (isStationaryJump())
