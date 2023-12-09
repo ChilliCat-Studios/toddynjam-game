@@ -10,22 +10,21 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     private float ViewRange = 100f;
     [SerializeField]
-    private float detectionCheckDelays = 0.1f;
-    public Transform targetObj = null;
+    private float detectionCheckDelays = 10f;
+    private Transform targetObj = null;
     public Transform Player;
-   
+    private bool IntervalsBetwenChecks = true;
 
     public bool IsTargetInRange { get; private set; }
 
-    private void Start()
-    {
-        StartCoroutine(DetectionCourutine());
+    private void Update()
+    {   
+        
+            StartCoroutine(DetectionCourutine());
+        
     }
     // Update is called once per frame
-    private void Update()
-    {
-        StartCoroutine(DetectionCourutine());
-    }
+    
     private void DectecTarget()
     {
         if(targetObj == null)
@@ -53,15 +52,17 @@ public class EnemyMove : MonoBehaviour
             targetObj = Player;
             if (targetObj = Player)
             {
-                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 10f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(this.transform.position, targetObj.position, 50f * Time.deltaTime);
             }
         }
     }
 
     IEnumerator DetectionCourutine() 
     {
-        yield return new WaitForSeconds(detectionCheckDelays);
+       
+        yield return new WaitForSeconds ( 20.0f );
         DectecTarget();
-        StartCoroutine(DetectionCourutine());
+        
+        
     }
 }
