@@ -29,13 +29,13 @@ public class TimeManager : MonoBehaviour
         if (Timer <= 0)
         {
             Minute++;
-            Debug.Log(Minute);
+            //Debug.Log(Minute);
             OnMinuteChanged? .Invoke();
 
             if(Minute >= 60)
             {
                 Hour++;
-                Debug.Log(Hour);
+                //Debug.Log(Hour);
                 Minute = 0;
                 OnHourChanged? .Invoke();
             }

@@ -6,10 +6,8 @@ public class MainPlayerCameraData : MonoBehaviour
 {
     public void Start()
     {
-        SaveCamera();
-
+        SaveSystem.DeleteCameraData();
         StartCoroutine(SavingCouritine());
-
     }
     public void SaveCamera()
     {
@@ -23,21 +21,33 @@ public class MainPlayerCameraData : MonoBehaviour
         LevelEntitysData data = SaveSystem.LoadCameraData();
 
         Vector3 position;
-        position.x = data.PlayerPosition[0];
-        position.y = data.PlayerPosition[1];
-        position.z = data.PlayerPosition[2];
+        position.x = data.CameraPosition[0];
+        position.y = data.CameraPosition[1];
+        position.z = data.CameraPosition[2];
         transform.position = new Vector3((float)position.x, (float)position.y, (float)position.z);
 
         Debug.Log("Loading Camera Data");
-        Debug.Log(data.PlayerPosition[0]);
-        Debug.Log(data.PlayerPosition[1]);
-        Debug.Log(data.PlayerPosition[2]);
+        Debug.Log(data.CameraPosition[0]);
+        Debug.Log(data.CameraPosition[1]);
+        Debug.Log(data.CameraPosition[2]);
     }
 
     IEnumerator SavingCouritine()
     {
-        yield return new WaitForSeconds(5.0f);
-        LoadCamera();
-        StopAllCoroutines();
+        //demonstration
+        do
+        {
+            yield return new WaitForSeconds(5.0f);
+            SaveCamera();
+            yield return new WaitForSeconds(5.0f);
+            LoadCamera();
+            LoadCamera();
+            LoadCamera();
+            yield return new WaitForSeconds(5.0f);
+            SaveSystem.DeleteCameraData();
+            Debug.Log("Deleted");
+            yield return new WaitForSeconds(3.0f);
+            StartCoroutine(SavingCouritine());
+        }while (true);
     }
 }

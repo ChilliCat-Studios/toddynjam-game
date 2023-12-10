@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-  
 
-    public void Start()
+    PlayerMovement controller;
+    private void Start()
     {
-        SavePlayer();
-
+        // controller = GetComponent<PlayerMovement>();
+        SaveSystem.DeletePlayerData();
         StartCoroutine(SavingCouritine());
         
     }
-    public void SavePlayer()
+    private void SavePlayer()
     {
         SaveSystem.SavePlayerData(this);
         Debug.Log("Saving Data");
        
     }
-
-    public void LoadPlayer()
+    
+    private void LoadPlayer()
     {
         LevelEntitysData data = SaveSystem.LoadPlayerData();
 
@@ -38,8 +38,20 @@ public class PlayerData : MonoBehaviour
     
     IEnumerator SavingCouritine()
     {
-        yield return new WaitForSeconds(5.0f);
-        LoadPlayer();
-       StopAllCoroutines();
+        //demonstration
+        do
+        {
+            yield return new WaitForSeconds(5.0f);
+            SavePlayer();
+            yield return new WaitForSeconds(5.0f);
+            LoadPlayer();
+            LoadPlayer();
+            LoadPlayer();
+            yield return new WaitForSeconds(5.0f);
+            SaveSystem.DeletePlayerData();
+            Debug.Log("Deleted");
+            yield return new WaitForSeconds(3.0f);
+            StartCoroutine(SavingCouritine());
+        }while(true);
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CillynderData : MonoBehaviour
@@ -7,8 +6,7 @@ public class CillynderData : MonoBehaviour
 
     public void Start()
     {
-        SaveCillynder();
-
+        SaveSystem.DeleteCillynderData();
         StartCoroutine(SavingCouritine());
 
     }
@@ -24,21 +22,33 @@ public class CillynderData : MonoBehaviour
         LevelEntitysData data = SaveSystem.LoadCillynderData();
 
         Vector3 position;
-        position.x = data.PlayerPosition[0];
-        position.y = data.PlayerPosition[1];
-        position.z = data.PlayerPosition[2];
+        position.x = data.CillynderPosition[0];
+        position.y = data.CillynderPosition[1];
+        position.z = data.CillynderPosition[2];
         transform.position = new Vector3((float)position.x, (float)position.y, (float)position.z);
 
         Debug.Log("Loading Cillynder Data");
-        Debug.Log(data.PlayerPosition[0]);
-        Debug.Log(data.PlayerPosition[1]);
-        Debug.Log(data.PlayerPosition[2]);
+        Debug.Log(data.CillynderPosition[0]);
+        Debug.Log(data.CillynderPosition[1]);
+        Debug.Log(data.CillynderPosition[2]);
     }
 
     IEnumerator SavingCouritine()
     {
-        yield return new WaitForSeconds(5.0f);
-        LoadCillynder();
-        StopAllCoroutines();
+        //demonstration
+        do
+        {
+            yield return new WaitForSeconds(5.0f);
+            SaveCillynder();
+            yield return new WaitForSeconds(5.0f);
+            LoadCillynder();
+            LoadCillynder();
+            LoadCillynder();
+            yield return new WaitForSeconds(5.0f);
+            SaveSystem.DeleteCillynderData();
+            Debug.Log("Deleted");
+            yield return new WaitForSeconds(3.0f);
+        }while (true);
+
     }
 }

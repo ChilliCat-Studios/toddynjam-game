@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 985943234808196967}
   - component: {fileID: 1935959636134263438}
   - component: {fileID: 5774333999091976537}
-  - component: {fileID: 4086716431513643800}
+  - component: {fileID: 725798884463090391}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -115,7 +115,7 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &4086716431513643800
+--- !u!114 &725798884463090391
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 8642503578479511723}
   - component: {fileID: 1078440603535384327}
   - component: {fileID: 2929919711892941530}
-  - component: {fileID: 3975346789232286654}
+  - component: {fileID: 1827109768397388339}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -207,8 +207,8 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
+  m_HDR: 0
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8efeab85b28369644b9683fd23601c50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSensitivity: 1000
+  mouseSensitivity: 750
   playerBody: {fileID: 3625826163990533669}
---- !u!114 &3975346789232286654
+--- !u!114 &1827109768397388339
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -366,11 +366,11 @@ GameObject:
   - component: {fileID: 3625826163990533669}
   - component: {fileID: 2353042175522241835}
   - component: {fileID: 8917537144793730474}
-  - component: {fileID: 1164743909740533871}
+  - component: {fileID: 1131279787796091575}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -412,7 +412,7 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 3
   m_Height: 3.8
-  m_Radius: 0.6
+  m_Radius: 0.6173415
   m_SlopeLimit: 30
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -438,7 +438,7 @@ MonoBehaviour:
   jumpHeight: 3
   groundCheck: {fileID: 0}
   groundDistance: 0.6
---- !u!114 &1164743909740533871
+--- !u!114 &1131279787796091575
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
