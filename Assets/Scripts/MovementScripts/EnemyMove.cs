@@ -10,7 +10,7 @@ public class EnemyMove : MonoBehaviour
     [SerializeField]
     private float ViewRange = 100f;
     [SerializeField]
-    private float detectionCheckDelays = 10f;
+    private float detectionCheckDelays = 20f;
     private Transform targetObj = null;
     public Transform Player;
     private bool IntervalsBetwenChecks = true;
@@ -60,7 +60,7 @@ public class EnemyMove : MonoBehaviour
     IEnumerator DetectionCourutine() 
     {
        
-        yield return new WaitForSeconds ( 20.0f );
+        yield return new WaitForSeconds ( detectionCheckDelays );
         DectecTarget();
         
         

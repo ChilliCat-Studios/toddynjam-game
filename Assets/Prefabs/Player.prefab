@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 985943234808196967}
   - component: {fileID: 1935959636134263438}
   - component: {fileID: 5774333999091976537}
+  - component: {fileID: 4086716431513643800}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -114,6 +115,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4086716431513643800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2848906203159429735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6fd7d9aef5054459e32934c17da543, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6572616844005913424
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,6 +139,7 @@ GameObject:
   - component: {fileID: 8642503578479511723}
   - component: {fileID: 1078440603535384327}
   - component: {fileID: 2929919711892941530}
+  - component: {fileID: 3975346789232286654}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -142,7 +156,7 @@ Transform:
   m_GameObject: {fileID: 6572616844005913424}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.49, z: 0}
+  m_LocalPosition: {x: 0, y: 1.4900002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -222,6 +236,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mouseSensitivity: 1000
   playerBody: {fileID: 3625826163990533669}
+--- !u!114 &3975346789232286654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6572616844005913424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657eca9d368cc3a4bb4a9095706fcd3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7685826369430085033
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +366,7 @@ GameObject:
   - component: {fileID: 3625826163990533669}
   - component: {fileID: 2353042175522241835}
   - component: {fileID: 8917537144793730474}
+  - component: {fileID: 1164743909740533871}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -405,7 +432,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 2353042175522241835}
   moveSpeed: 6
+  straifSpeed: 4
+  backwardSpeed: 2
   gravity: -26.82
   jumpHeight: 3
   groundCheck: {fileID: 0}
   groundDistance: 0.6
+--- !u!114 &1164743909740533871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9208409475122161628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18e7a61a6dfe56147a222661e08659ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
